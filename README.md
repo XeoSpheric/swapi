@@ -1,16 +1,21 @@
 # SWAPI
-## The Star Wars API 
+
+## The Star Wars API
 
 Source code for [swapi.dev](https://swapi.dev)
 
+## What happened to swapi.co?
 
-## What happened to swapi.co? 
-Unfortunately swapi.co is not maintained anymore. 
+Unfortunately swapi.co is not maintained anymore.
 
-## What is swapi.dev? 
-An "unofficial" branch of "swapi", supported by @juriy
+## What is swapi.dev?
 
+An "unofficial" branch of "swapi", supported by @juriy.
 
-## Will it be updated?
-Original swapi project is built on Python/Django stack that is quite outdated by now. It would be a great exercise to rewrite it in cloud-native manner, but this requires time and effort. I'm looking into doing that. There's no timelines yet, since "swapi" stopped its existence quite suddenly. Suggestions and help are always welcome!
+## What is the goal?
 
+The goal of this branch is to provide a React port of the front-end and move the backend to Rust.
+
+## What is the timeline?
+
+I am hoping to complete the front-end one week from the branch creation. After that is complete I will be starting the Rust port. If the rust port is successful, I am going to test out creating the front-end with one of the Rust frameworks.
