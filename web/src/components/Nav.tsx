@@ -1,4 +1,7 @@
+import { Link, useNavigate } from 'react-router-dom';
+
 export default function Nav() {
+  const navigate = useNavigate();
   return (
     <div className="navbar bg-base-100">
       <div className="flex-none md:hidden">
@@ -19,7 +22,12 @@ export default function Nav() {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl text-primary">SWAPI</a>
+        <Link
+          to={'/'}
+          className="btn btn-ghost normal-case text-xl text-primary"
+        >
+          SWAPI
+        </Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
@@ -32,13 +40,13 @@ export default function Nav() {
         {/* Large Expanded View */}
         <ul className="menu menu-horizontal p-0 hidden lg:inline-flex">
           <li>
-            <a>Home</a>
+            <Link to={'/'}>Home</Link>
           </li>
           <li>
-            <a>About</a>
+            <Link to={'/about'}>About</Link>
           </li>
           <li>
-            <a>Docs</a>
+            <Link to={'/docs'}>Docs</Link>
           </li>
           <li>
             <a>
