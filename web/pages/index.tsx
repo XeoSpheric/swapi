@@ -1,4 +1,6 @@
-export default function Home() {
+import type { NextPage } from 'next';
+
+const Home: NextPage = () => {
   return (
     <>
       <div className="hero min-h-12 bg-base-200">
@@ -34,12 +36,12 @@ export default function Home() {
           <div className="card-body items-center text-center">
             <h2 className="card-title">What is this?</h2>
             <p>
-              The Star Wars API, or "swapi" (Swah-pee) is the world's first
+              {`The Star Wars API, or "swapi" (Swah-pee) is the world's first
               quantified and programmatically-accessible data source for all the
               data from the Star Wars canon universe! We've taken all the rich
               contextual stuff from the universe and formatted into something
               easier to consume with software. Then we went and stuck an API on
-              the front so you can access it all!
+              the front so you can access it all!`}
             </p>
           </div>
         </div>
@@ -47,11 +49,11 @@ export default function Home() {
           <div className="card-body items-center text-center">
             <h2 className="card-title">How can I use it?</h2>
             <p>
-              All the data is accessible through our HTTP web API. Consult our
+              {`All the data is accessible through our HTTP web API. Consult our
               documentation if you'd like to get started. Helper libraries for
               popular programming languages are also provided so you can consume
               swapi in your favourite programming language, in a style that
-              suits you.
+              suits you.`}
             </p>
           </div>
         </div>
@@ -59,14 +61,16 @@ export default function Home() {
           <div className="card-body items-center text-center">
             <h2 className="card-title">What happened to swapi.co?</h2>
             <p>
-              swapi.co is not supported and maintained anymore. But since so
+              {`swapi.co is not supported and maintained anymore. But since so
               many projects and tutorials used it as their educational
               playground, this is an "unofficial" branch. This project is open
-              source and you can contribute on GitHub.
+              source and you can contribute on GitHub.`}
             </p>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
+
+export default Home;

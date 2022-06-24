@@ -41,21 +41,21 @@ export default function About() {
         <div className="col-span-10">
           <h2 className="text-3xl">What is this?</h2>
           <p>
-            The Star Wars API is the world's first quantified and
+            {`The Star Wars API is the world's first quantified and
             programmatically-formatted set of Star Wars data. After hours of
             watching films and trawling through content online, we present to
             you all the People, Films, Species, Starships, Vehicles and Planets
             from Star Wars. We've formatted this data in JSON and exposed it to
             you in a RESTish implementation that allows you to programmatically
             collect and measure the data. Check out the documentation to get
-            started consuming swapi data
+            started consuming swapi data`}
           </p>
           <div className="divider"></div>
           <h2 className="text-3xl">What happened to swapi.co?</h2>
           <p>
-            Unfortulately swapi.co is not maintained anymore, and the service is
+            {`Unfortulately swapi.co is not maintained anymore, and the service is
             currently down. This is a branch of SWAPI that will be supported
-            going forward.
+            going forward.`}
           </p>
         </div>
       </div>

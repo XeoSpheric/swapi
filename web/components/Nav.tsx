@@ -1,7 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
-
+import Image from 'next/image';
+import Link from 'next/link';
 export default function Nav() {
-  const navigate = useNavigate();
   return (
     <div className="navbar bg-base-100">
       <div className="flex-none md:hidden">
@@ -21,12 +20,9 @@ export default function Nav() {
           </svg>
         </button>
       </div>
-      <div className="flex-1">
-        <Link
-          to={'/'}
-          className="btn btn-ghost normal-case text-xl text-primary"
-        >
-          SWAPI
+      <div className="flex-1 md:ml-3">
+        <Link href={'/'} className="btn btn-ghost">
+          <span className="text-primary normal-case text-xl">SWAPI</span>
         </Link>
       </div>
       <div className="flex-none gap-2">
@@ -40,20 +36,23 @@ export default function Nav() {
         {/* Large Expanded View */}
         <ul className="menu menu-horizontal p-0 hidden lg:inline-flex">
           <li>
-            <Link to={'/'}>Home</Link>
+            <Link href={'/'}>Home</Link>
           </li>
           <li>
-            <Link to={'/about'}>About</Link>
+            <Link href={'/about'}>About</Link>
           </li>
           <li>
-            <Link to={'/docs'}>Docs</Link>
+            <Link href={'/docs'}>Docs</Link>
           </li>
           <li>
             <a>
               <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="https://api.lorem.space/image/face?hash=33791" />
-                </div>
+                <Image
+                  src="https://api.lorem.space/image/face?hash=33791"
+                  alt="Account Profile Picture"
+                  className="w-10 rounded-full"
+                  layout="fill"
+                />
               </label>
             </a>
           </li>
