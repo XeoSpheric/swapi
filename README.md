@@ -14,8 +14,8 @@ An "unofficial" branch of "swapi", supported by @juriy.
 
 ## What is the goal?
 
-The goal of this branch is to provide a React port of the front-end and move the backend to Rust.
+The goal of this branch is to provide a React port the service (using the NextJS Framework).
 
 ## What is the timeline?
 
-I am hoping to complete the front-end one week from the branch creation. After that is complete I will be starting the Rust port. If the rust port is successful, I am going to test out creating the front-end with one of the Rust frameworks.
+I am hoping to complete the front-end one week from the branch creation. After that is complete, my attention will be turned onto the api. That will start with an exact port of the services, then decide some future enhancements.
