@@ -1,9 +1,6 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import type { NextPage } from 'next';
-import { firebaseApp } from '../services';
 
 const Home: NextPage = () => {
-  console.log(firebaseApp);
   return (
     <>
       <div className="hero min-h-12 bg-base-200">
