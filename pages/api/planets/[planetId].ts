@@ -1,8 +1,6 @@
-import assert from 'assert';
-import { getDocs, collection } from 'firebase/firestore';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { Planet } from '../../../classes';
-import { getPlanets, store } from '../../../services';
+import { Planet } from '../../../resources';
+import { getSingleDoc } from '../../../resources';
 
 export default function handler(
   req: NextApiRequest,
@@ -12,18 +10,18 @@ export default function handler(
   switch (method) {
     case 'GET':
       // Get data from your database
-      getPlanets(req.query.planetId as string).then((result) => {
-        if (result.error) {
-          console.log(result);
-          res
-            .status(result.code)
-            .json({ message: result.error.message, cause: result.error.cause });
+      getSingleDoc<Planet>('planets', req.query.planetId as string).then(
+        (result) => {
+          if (result.error) {
+            console.log(result);
+            res.status(result.code).json({ message: result.error.message });
+            res.end();
+            return;
+          }
+          res.status(result.code).json(result.data);
           res.end();
-          return;
         }
-        res.status(result.code).json(result.data);
-        res.end();
-      });
+      );
       break;
     // case 'PUT':
     //   // Update or create data in your database

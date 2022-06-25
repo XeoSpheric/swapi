@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Planet } from '../../../classes';
-import { getPlanets } from '../../../services';
+import { Planet } from '../../../resources';
+import { getCollection } from '../../../resources';
 
 export default function userHandler(
   req: NextApiRequest,
@@ -11,11 +11,9 @@ export default function userHandler(
   switch (method) {
     case 'GET':
       // Get data from your database
-      getPlanets().then((result) => {
+      getCollection<Planet>('planets').then((result) => {
         if (result.error) {
-          res
-            .status(result.code)
-            .json({ message: result.error.message, cause: result.error.cause });
+          res.status(result.code).json({ message: result.error.message });
           res.end();
           return;
         }
