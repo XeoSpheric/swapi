@@ -18,8 +18,11 @@ export default function handler(
           res
             .status(result.code)
             .json({ message: result.error.message, cause: result.error.cause });
+          res.end();
+          return;
         }
         res.status(result.code).json(result.data);
+        res.end();
       });
       break;
     // case 'PUT':

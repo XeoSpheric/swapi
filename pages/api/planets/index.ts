@@ -3,13 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Planet } from '../../../classes';
 import { getPlanets } from '../../../services';
 
-type Data = {
-  name: string;
-};
-
 export default function userHandler(
   req: NextApiRequest,
-  res: NextApiResponse<Planet[] | Planet | string>
+  res: NextApiResponse<any>
 ) {
   const { method } = req;
   switch (method) {
@@ -17,7 +13,11 @@ export default function userHandler(
       // Get data from your database
       getPlanets().then((result) => {
         if (result.error) {
-          res.status(result.code).json(result.error.message);
+          res
+            .status(result.code)
+            .json({ message: result.error.message, cause: result.error.cause });
+          res.end();
+          return;
         }
         if (result.data && Array.isArray(result.data)) {
           if (req.query.search) {
@@ -27,9 +27,14 @@ export default function userHandler(
                 matches.push(result.data[i]);
               }
             }
-            res.status(result.code).json(matches);
+            res.status(result.code);
+            res.json(matches);
+            res.end();
+            return;
           }
-          res.status(result.code).json(result.data);
+          res.status(result.code);
+          res.json(result.data);
+          res.end();
         }
       });
       break;
