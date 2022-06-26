@@ -112,3 +112,5 @@ export enum ResourcesType {
   Starships = 'starships',
   Vehicles = 'vehicles',
 }
+
+export type Resource = Film | People | Planet | Species | Starship | Vehicle;
