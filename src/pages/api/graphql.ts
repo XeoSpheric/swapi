@@ -1,5 +1,4 @@
 import { createServer } from '@graphql-yoga/node';
-import { getCollection, getSingleDoc, Planet } from '@/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -8,6 +7,9 @@ const typeDefs = /* GraphQL */ `
   type Query {
     planets: [Planet!]!
     planet(id: ID, name: String): Planet
+  }
+  type People {
+    name: String
   }
   type Planet {
     climate: String
@@ -20,14 +22,18 @@ const typeDefs = /* GraphQL */ `
     rotation_period: String
     surface_water: String
     terrain: String
-    url: String
+    People: [People]
   }
 `;
 
 const resolvers = {
   Query: {
     async planets() {
-      const data = await prisma.planet.findMany();
+      const data = await prisma.planet.findMany({
+        include: {
+          People: true,
+        },
+      });
       return data ? data : [];
     },
     async planet(_: any, args: { id: number; name: string }) {
