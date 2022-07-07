@@ -8,6 +8,7 @@ import {
   Starship,
   Vehicle,
   Species,
+  Stringify,
 } from '../../utils';
 const prisma = new PrismaClient();
 
@@ -28,20 +29,21 @@ export default async function userHandler(
     switch (path) {
       case ResourcesType.Planets:
         if (id !== null) {
-          const planet = await prisma.planet.findFirst({
+          const data = await prisma.planet.findFirst({
             where: { id: Number(id) },
           });
-          const json = JSON.stringify(planet, (_, value) =>
-            typeof value === 'bigint' ? value.toString() + 'n' : value
-          );
-          res.status(200).json(json);
+          res.status(200).json(Stringify(data));
           return;
         }
-        const planet = await prisma.planet.findMany();
-        const json = JSON.stringify(planet, (_, value) =>
-          typeof value === 'bigint' ? value.toString() + 'n' : value
-        );
-        res.status(200).json(json);
+        if (search) {
+          const data = await prisma.planet.findMany({
+            where: { name: { contains: search as string } },
+          });
+          res.status(200).json(Stringify(data));
+          return;
+        }
+        const data = await prisma.planet.findMany();
+        res.status(200).json(Stringify(data));
         return;
 
       default:
